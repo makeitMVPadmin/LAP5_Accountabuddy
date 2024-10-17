@@ -8,10 +8,11 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 // import Modal from '@mui/material/Modal';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from 'react-modal';
 import { PopUpModal, PopUpStyle } from "../../components/PopUpModal/PopUpModal";
 import LoadingPage from "../../components/LoadingPage/LoadingPage";
+import { getAllJobsData } from "../../utils/Functions/functions";
 
 const style = {
   position: 'absolute',
@@ -39,6 +40,18 @@ const TestPage = () => {
     setModalOpen(false);
 
   };
+  const [jobs, setJobs] = useState("");
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getAllJobsData("Jobs");
+      setJobs(result[0]);
+      console.log(result[0]);
+    };
+    fetchData();
+  }, []);
+  
+
+
   return (
     <div>
       {/* <Dropdown />
@@ -73,6 +86,10 @@ const TestPage = () => {
       <Button className="promptpage__post-btn" onClick={handleOpenPostModal}>
         goal
       </Button>
+
+
+      Jobs data
+      <div>{jobs.title}</div>
     </div>
   );
 };
