@@ -33,7 +33,6 @@ function throttle(func, limit) {
   };
 }
 
-
 // USER LOGIN
 // export const userLogin = async (email, password) => {
 //   try {
@@ -54,13 +53,12 @@ function throttle(func, limit) {
 //     } else {
 //       console.log("User not found");
 //       return { message: "User not found", status: 404 };
-//     } 
+//     }
 //   } catch (e) {
 //       console.log(e);
 //       return { message: "An error occurred during login", status: 500 };
 //     }
 //   };
-
 
 // REGISTER USER (REVIEW)
 // export const registerUser = async (email, password) => {
@@ -73,7 +71,7 @@ function throttle(func, limit) {
 //     // Step 2: Check if the user already exists
 //     const q = query(collection(db, "Users"), where("email", "==", email));
 //     const existingUserSnapshot = await getDocs(q);
-    
+
 //     if (!existingUserSnapshot.empty) {
 //       // User already exists
 //       return { message: "Email already taken", status: 409 };
@@ -93,13 +91,12 @@ function throttle(func, limit) {
 
 //     // Step 5: Return a success response
 //     return { message: "User registered successfully", status: 201 };
-    
+
 //   } catch (error) {
 //     console.error("Error registering user: ", error);
 //     return { message: "An error occurred during registration", status: 500 };
 //   }
 // };
-
 
 // USER LOGOUT
 // export const userLogout = async (id) => {
@@ -112,7 +109,6 @@ function throttle(func, limit) {
 //     res.status(500).json({ message: 'An error occurred during logout', status: 500 });
 //   }
 // }
-
 
 // GET USER DETAILS (REVIEW)
 export const getUserDetails = async (user_id) => {
@@ -133,18 +129,40 @@ export const getUserDetails = async (user_id) => {
 
     // Step 4: Extract user data
     const userData = userSnapshot.data();
-    const { id, email, firstName, lastName, linkedin, matchedWith, profile, role, skills } = userData; // Extract specific fields
+    const {
+      id,
+      email,
+      firstName,
+      lastName,
+      linkedin,
+      matchedWith,
+      profile,
+      role,
+      skills,
+    } = userData; // Extract specific fields
 
     // Step 5: Return the user details
     return {
       message: "User details fetched successfully",
       status: 200,
-      data: { id, email, firstName, lastName, linkedin, matchedWith, profile, role, skills } // Return the details
+      data: {
+        id,
+        email,
+        firstName,
+        lastName,
+        linkedin,
+        matchedWith,
+        profile,
+        role,
+        skills,
+      }, // Return the details
     };
-
   } catch (error) {
     console.error("Error fetching user details: ", error);
-    return { message: "An error occurred while fetching user details", status: 500 };
+    return {
+      message: "An error occurred while fetching user details",
+      status: 500,
+    };
   }
 };
 
@@ -157,7 +175,6 @@ export const getUserDetails = async (user_id) => {
 //   }
 // }
 
-
 // UPDATE USER DETAILS
 export const updateUserDetails = async (id, data) => {
   try {
@@ -167,33 +184,33 @@ export const updateUserDetails = async (id, data) => {
     console.error("Error updating document: ", e);
     throw e;
   }
-}
-
+};
 
 // CREATE COLLABORATION ROOM
 export const createCollaborationRoom = async (id, challengeId) => {
   try {
-    const docRef = await addDoc(collection(db, "CollaborationRooms"), { id, challengeId });
+    const docRef = await addDoc(collection(db, "CollaborationRooms"), {
+      id,
+      challengeId,
+    });
     return docRef.id;
   } catch (e) {
     console.error("Error creating document: ", e);
     throw e;
   }
-}
-
+};
 
 // GET COLLABORATION ROOM INFO
-export const getCollaborationRoomInfo = async (roomID) => {
-  try {
-    const docRef = doc(db, "CollaborationRooms", roomID);
-    const roomData = await docRef.get();
-    return roomData.data();
-  } catch (e) {
-    console.error("Error getting document: ", e);
-    throw e;
-  }
-}
-
+// export const getCollaborationRoomInfo = async (roomID) => {
+//   try {
+//     const docRef = doc(db, "CollaborationRooms", roomID);
+//     const roomData = await docRef.get();
+//     return roomData.data();
+//   } catch (e) {
+//     console.error("Error getting document: ", e);
+//     throw e;
+//   }
+// };
 
 // ADD USER TO COLLABORATION ROOM
 export const addUserToCollaborationRoom = async (roomID, id) => {
@@ -204,8 +221,7 @@ export const addUserToCollaborationRoom = async (roomID, id) => {
     console.error("Error updating document: ", e);
     throw e;
   }
-}
-
+};
 
 // REMOVE USER FROM COLLABORATION ROOM
 export const removeUserFromCollaborationRoom = async (roomID, id) => {
@@ -216,43 +232,40 @@ export const removeUserFromCollaborationRoom = async (roomID, id) => {
     console.error("Error updating document: ", e);
     throw e;
   }
-}
-
-
-// HANDLE ONLINE CALL
-export const handleOnlineCall = async (roomID, callStatus) => {
-  try {
-    const roomRef = doc(db, "CollaborationRooms", roomID);
-    const roomSnap = await getDoc(roomRef);
-
-    if (roomSnap.exists()) {
-      const roomData = roomSnap.data();
-
-      await updateDoc(roomRef, {
-        callStatus: callStatus,
-      });
-
-      console.log('Call status for room ${roomID} updated to ${callStatus}');
-      return { message: 'Call status updated to ${callStatus}', status: 200};
-
-    } else {
-      console.log("Room not found");
-      return { message: "Room not found", status: 404 };
-    }
-  } catch (error) {
-    console.error("Error handling the online call: ", error);
-    return { message: "Error handling the online call", status: 500};
-  }
 };
 
+// HANDLE ONLINE CALL
+// export const handleOnlineCall = async (roomID, callStatus) => {
+//   try {
+//     const roomRef = doc(db, "CollaborationRooms", roomID);
+//     const roomSnap = await getDoc(roomRef);
 
-  // PAIR USERS FOR COLLABORATION (REVIEW)
+//     if (roomSnap.exists()) {
+//       const roomData = roomSnap.data();
+
+//       await updateDoc(roomRef, {
+//         callStatus: callStatus,
+//       });
+
+//       console.log("Call status for room ${roomID} updated to ${callStatus}");
+//       return { message: "Call status updated to ${callStatus}", status: 200 };
+//     } else {
+//       console.log("Room not found");
+//       return { message: "Room not found", status: 404 };
+//     }
+//   } catch (error) {
+//     console.error("Error handling the online call: ", error);
+//     return { message: "Error handling the online call", status: 500 };
+//   }
+// };
+
+// PAIR USERS FOR COLLABORATION (REVIEW)
 export const pairUsersForCollaboration = async () => {
   try {
     // Step 1: Fetch all available users for collaboration
     const usersSnapshot = await getDocs(collection(db, "Users"));
     const users = [];
-    
+
     // Loop through the users and extract their skillsets
     usersSnapshot.forEach((doc) => {
       const userData = doc.data();
@@ -270,7 +283,9 @@ export const pairUsersForCollaboration = async () => {
     for (let i = 0; i < users.length - 1; i++) {
       for (let j = i + 1; j < users.length; j++) {
         // Check if the two users have any common skills
-        const commonSkills = users[i].skillsets.filter(skill => users[j].skillsets.includes(skill));
+        const commonSkills = users[i].skillsets.filter((skill) =>
+          users[j].skillsets.includes(skill)
+        );
         if (commonSkills.length > 0) {
           // We found two users with common skills, pair them together
           pairedUsers = [users[i], users[j]];
@@ -282,13 +297,20 @@ export const pairUsersForCollaboration = async () => {
 
     if (pairedUsers) {
       // Step 3: Pair the users and create a collaboration room
-      const collaborationRoomRef = await addDoc(collection(db, "CollaborationRooms"), {
-        userIds: pairedUsers.map(user => user.id),
-        commonSkills: pairedUsers[0].skillsets.filter(skill => pairedUsers[1].skillsets.includes(skill)),
-        isActive: true,
-      });
+      const collaborationRoomRef = await addDoc(
+        collection(db, "CollaborationRooms"),
+        {
+          userIds: pairedUsers.map((user) => user.id),
+          commonSkills: pairedUsers[0].skillsets.filter((skill) =>
+            pairedUsers[1].skillsets.includes(skill)
+          ),
+          isActive: true,
+        }
+      );
 
-      console.log(`Collaboration room created with ID: ${collaborationRoomRef.id}`);
+      console.log(
+        `Collaboration room created with ID: ${collaborationRoomRef.id}`
+      );
       return {
         message: "Users paired successfully",
         roomId: collaborationRoomRef.id,
@@ -304,22 +326,19 @@ export const pairUsersForCollaboration = async () => {
   }
 };
 
-
 // !!!!! Old Code !!!!!
 
-
 export const getAllChallengesData = async (collectionName) => {
-  try{
+  try {
     const challengeData = await getDocs(collection(db, collectionName));
     console.log(challengeData);
-  }catch(e){
+  } catch (e) {
     console.log(e);
   }
 };
 
-export const getAllJobsData = async (collectionName) =>{
-  try{
-
+export const getAllJobsData = async (collectionName) => {
+  try {
     const querySnapshot = await getDocs(collection(db, collectionName));
     const dataList = [];
     querySnapshot.forEach((doc) => {
@@ -327,7 +346,7 @@ export const getAllJobsData = async (collectionName) =>{
     });
     console.log(dataList);
     return dataList;
-  }catch(e){
+  } catch (e) {
     console.log(e);
   }
 };
@@ -394,7 +413,7 @@ export const getAllQuestions = async () => {
     console.error("Error reading documents: ", e);
     throw e;
   }
-}
+};
 
 // Get all UserAnswers
 export const getAllUserAnswers = throttle(async () => {
@@ -408,4 +427,5 @@ export const getAllUserAnswers = throttle(async () => {
   } catch (e) {
     console.error("Error reading documents: ", e);
     throw e;
-  }});
+  }
+});
