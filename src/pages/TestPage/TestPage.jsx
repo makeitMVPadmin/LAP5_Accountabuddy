@@ -4,24 +4,25 @@ import ListWithCheckbox from "../../components/ListWithCheckbox/ListWithCheckbox
 import DropdownCheckbox from "../../components/DropdownCheckbox/DropdownCheckbox";
 import PromptPage from "../PromptPage/PromptPage";
 import NoMatch from "../../components/NoMatch/NoMatch";
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 // import Modal from '@mui/material/Modal';
 import { useEffect, useState } from "react";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 import { PopUpModal, PopUpStyle } from "../../components/PopUpModal/PopUpModal";
-import LoadingPage from "../../components/LoadingPage/LoadingPage";
+import LoadingPage from "../../pages/LoadingPage/LoadingPage";
+import ChallengeCard from "../../components/ChallengeCard/ChallengeCard";
 import { getAllJobsData } from "../../utils/Functions/functions";
 
 const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
+  bgcolor: "background.paper",
+  border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
@@ -38,7 +39,6 @@ const TestPage = () => {
 
   const handleClosePostModal = () => {
     setModalOpen(false);
-
   };
   const [jobs, setJobs] = useState("");
   useEffect(() => {
@@ -49,8 +49,6 @@ const TestPage = () => {
     };
     fetchData();
   }, []);
-  
-
 
   return (
     <div>
@@ -59,7 +57,7 @@ const TestPage = () => {
       {/* <ListWithCheckbox /> */}
       {/* <PromptPage />
       <NoMatch /> */}
-<LoadingPage/>
+      <LoadingPage />
       <Modal
         id="promptpage__linkedinpost-modal"
         isOpen={isModalOpen}
@@ -70,24 +68,25 @@ const TestPage = () => {
         shouldCloseOnOverlayClick={false}
       >
         <>
-        <PopUpModal
-          title={{ title: "goal breakdown" }}
-          closeButtonName="Close"
-        >
-          {/* <ErrorMessageAlert>
+          <PopUpModal
+            title={{ title: "goal breakdown" }}
+            closeButtonName="Close"
+          >
+            {/* <ErrorMessageAlert>
           </ErrorMessageAlert> */}
-          hello this is the goal breakdown
-          <Button className="successMessage__linkedin-btn" onClick={handleClosePostModal}>
-            Close
-          </Button>
-        </PopUpModal>
+            hello this is the goal breakdown
+            <Button
+              className="successMessage__linkedin-btn"
+              onClick={handleClosePostModal}
+            >
+              Close
+            </Button>
+          </PopUpModal>
         </>
       </Modal>
       <Button className="promptpage__post-btn" onClick={handleOpenPostModal}>
         goal
       </Button>
-
-
       Jobs data
       <div>{jobs.title}</div>
     </div>
