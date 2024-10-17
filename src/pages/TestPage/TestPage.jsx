@@ -1,46 +1,15 @@
 import "./TestPage.scss";
-import Dropdown from "../../components/Dropdown/Dropdown";
-import ListWithCheckbox from "../../components/ListWithCheckbox/ListWithCheckbox";
-import DropdownCheckbox from "../../components/DropdownCheckbox/DropdownCheckbox";
-import PromptPage from "../PromptPage/PromptPage";
-import NoMatch from "../../components/NoMatch/NoMatch";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-// import Modal from '@mui/material/Modal';
 import { useEffect, useState } from "react";
 import Modal from "react-modal";
-import { PopUpModal, PopUpStyle } from "../../components/PopUpModal/PopUpModal";
-import LoadingPage from "../../pages/LoadingPage/LoadingPage";
-import ChallengeCard from "../../components/ChallengeCard/ChallengeCard";
+import { Button } from "@mui/material";
+import { PopUpModal } from "../../components/PopUpModal/PopUpModal";
 import { getAllJobsData } from "../../utils/Functions/functions";
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+import LoadingPage from "../LoadingPage/LoadingPage";
 
 const TestPage = () => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
   const [isModalOpen, setModalOpen] = useState(false);
-
-  const handleOpenPostModal = () => {
-    setModalOpen(true);
-  };
-
-  const handleClosePostModal = () => {
-    setModalOpen(false);
-  };
   const [jobs, setJobs] = useState("");
+
   useEffect(() => {
     const fetchData = async () => {
       const result = await getAllJobsData("Jobs");
@@ -50,13 +19,11 @@ const TestPage = () => {
     fetchData();
   }, []);
 
+  const handleOpenPostModal = () => setModalOpen(true);
+  const handleClosePostModal = () => setModalOpen(false);
+
   return (
     <div>
-      {/* <Dropdown />
-      <DropdownCheckbox /> */}
-      {/* <ListWithCheckbox /> */}
-      {/* <PromptPage />
-      <NoMatch /> */}
       <LoadingPage />
       <Modal
         id="promptpage__linkedinpost-modal"
@@ -67,28 +34,21 @@ const TestPage = () => {
         overlayClassName="modalOverlay"
         shouldCloseOnOverlayClick={false}
       >
-        <>
-          <PopUpModal
-            title={{ title: "goal breakdown" }}
-            closeButtonName="Close"
+        <PopUpModal title={{ title: "goal breakdown" }} closeButtonName="Close">
+          hello this is the goal breakdown
+          <Button
+            className="successMessage__linkedin-btn"
+            onClick={handleClosePostModal}
           >
-            {/* <ErrorMessageAlert>
-          </ErrorMessageAlert> */}
-            hello this is the goal breakdown
-            <Button
-              className="successMessage__linkedin-btn"
-              onClick={handleClosePostModal}
-            >
-              Close
-            </Button>
-          </PopUpModal>
-        </>
+            Close
+          </Button>
+        </PopUpModal>
       </Modal>
       <Button className="promptpage__post-btn" onClick={handleOpenPostModal}>
         goal
       </Button>
       Jobs data
-      <div>{jobs.title}</div>
+      <div>{jobs?.title}</div>
     </div>
   );
 };
