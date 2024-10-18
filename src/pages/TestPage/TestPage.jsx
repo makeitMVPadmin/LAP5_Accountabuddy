@@ -1,36 +1,27 @@
 import "./TestPage.scss";
-import Button from "@mui/material/Button";
-// import Modal from '@mui/material/Modal';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "react-modal";
-import { PopUpModal, PopUpStyle } from "../../components/PopUpModal/PopUpModal";
+import { Button } from "@mui/material";
+import { PopUpModal } from "../../components/PopUpModal/PopUpModal";
+import { getAllJobsData } from "../../utils/Functions/functions";
 import LoadingPage from "../LoadingPage/LoadingPage";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-
 const TestPage = () => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [jobs, setJobs] = useState("");
 
-  const handleOpenPostModal = () => {
-    setModalOpen(true);
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getAllJobsData("Jobs");
+      setJobs(result[0]);
+      console.log(result[0]);
+    };
+    fetchData();
+  }, []);
 
-  const handleClosePostModal = () => {
-    setModalOpen(false);
-  };
+  const handleOpenPostModal = () => setModalOpen(true);
+  const handleClosePostModal = () => setModalOpen(false);
+
   return (
     <div>
       <LoadingPage />
@@ -43,26 +34,21 @@ const TestPage = () => {
         overlayClassName="modalOverlay"
         shouldCloseOnOverlayClick={false}
       >
-        <>
-          <PopUpModal
-            title={{ title: "goal breakdown" }}
-            closeButtonName="Close"
+        <PopUpModal title={{ title: "goal breakdown" }} closeButtonName="Close">
+          hello this is the goal breakdown
+          <Button
+            className="successMessage__linkedin-btn"
+            onClick={handleClosePostModal}
           >
-            {/* <ErrorMessageAlert>
-          </ErrorMessageAlert> */}
-            hello this is the goal breakdown
-            <Button
-              className="successMessage__linkedin-btn"
-              onClick={handleClosePostModal}
-            >
-              Close
-            </Button>
-          </PopUpModal>
-        </>
+            Close
+          </Button>
+        </PopUpModal>
       </Modal>
       <Button className="promptpage__post-btn" onClick={handleOpenPostModal}>
         goal
       </Button>
+      Jobs data
+      <div>{jobs?.title}</div>
     </div>
   );
 };
