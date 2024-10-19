@@ -33,84 +33,7 @@ function throttle(func, limit) {
   };
 }
 
-// USER LOGIN
-// export const userLogin = async (email, password) => {
-//   try {
-//     const q = query(collection(db, "Users"), where("email", "==", email));
-//     const userSnapshot = await getDocs(q);
-
-//     if (!userSnapshot.empty) {
-//       const userDoc = userSnapshot.docs[0];
-//       const userData = userDoc.data();
-
-//       if (userData.password === password) {
-//         console.log("User logged in successfully");
-//         return { message: "User logged in successfully", status: 200 };
-//         } else {
-//           console.log("Incorrect password");
-//           return { message: "Incorrect password", status: 401 };
-//       }
-//     } else {
-//       console.log("User not found");
-//       return { message: "User not found", status: 404 };
-//     }
-//   } catch (e) {
-//       console.log(e);
-//       return { message: "An error occurred during login", status: 500 };
-//     }
-//   };
-
-// REGISTER USER (REVIEW)
-// export const registerUser = async (email, password) => {
-//   try {
-//     // Step 1: Validate input
-//     if (!email || !password) {
-//       return { message: "Email and password are required", status: 400 };
-//     }
-
-//     // Step 2: Check if the user already exists
-//     const q = query(collection(db, "Users"), where("email", "==", email));
-//     const existingUserSnapshot = await getDocs(q);
-
-//     if (!existingUserSnapshot.empty) {
-//       // User already exists
-//       return { message: "Email already taken", status: 409 };
-//     }
-
-//     // Step 3: Hash the password
-//     const hashedPassword = await bcrypt.hash(password, 10); // 10 is the salt rounds
-
-//     // Step 4: Add the new user to the database
-//     const newUser = {
-//       email: email,
-//       password: hashedPassword, // Save the hashed password
-//       createdAt: new Date()
-//     };
-
-//     await addDoc(collection(db, "Users"), newUser); // Save user in the "Users" collection
-
-//     // Step 5: Return a success response
-//     return { message: "User registered successfully", status: 201 };
-
-//   } catch (error) {
-//     console.error("Error registering user: ", error);
-//     return { message: "An error occurred during registration", status: 500 };
-//   }
-// };
-
-// USER LOGOUT
-// export const userLogout = async (id) => {
-//   try {
-//     const { id } = req.body;
-//     const result = await userLogout(id);
-//     res.status(200).json({ message: 'User logged out successfully', status: 200 });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ message: 'An error occurred during logout', status: 500 });
-//   }
-// }
-
-// GET USER DETAILS (REVIEW)
+// GET USER DETAILS
 export const getUserDetails = async (user_id) => {
   try {
     // Step 1: Validate the input
@@ -166,15 +89,6 @@ export const getUserDetails = async (user_id) => {
   }
 };
 
-// export const  getUserDetails = async (id) => {
-//   try {
-//     const userData = await getDoc(doc(db, Users));
-//     console.log(userData);
-//   } catch(e) {
-//     console.log(e);
-//   }
-// }
-
 // UPDATE USER DETAILS
 export const updateUserDetails = async (id, data) => {
   try {
@@ -200,18 +114,6 @@ export const createCollaborationRoom = async (id, challengeId) => {
   }
 };
 
-// GET COLLABORATION ROOM INFO
-// export const getCollaborationRoomInfo = async (roomID) => {
-//   try {
-//     const docRef = doc(db, "CollaborationRooms", roomID);
-//     const roomData = await docRef.get();
-//     return roomData.data();
-//   } catch (e) {
-//     console.error("Error getting document: ", e);
-//     throw e;
-//   }
-// };
-
 // ADD USER TO COLLABORATION ROOM
 export const addUserToCollaborationRoom = async (roomID, id) => {
   try {
@@ -233,31 +135,6 @@ export const removeUserFromCollaborationRoom = async (roomID, id) => {
     throw e;
   }
 };
-
-// HANDLE ONLINE CALL
-// export const handleOnlineCall = async (roomID, callStatus) => {
-//   try {
-//     const roomRef = doc(db, "CollaborationRooms", roomID);
-//     const roomSnap = await getDoc(roomRef);
-
-//     if (roomSnap.exists()) {
-//       const roomData = roomSnap.data();
-
-//       await updateDoc(roomRef, {
-//         callStatus: callStatus,
-//       });
-
-//       console.log("Call status for room ${roomID} updated to ${callStatus}");
-//       return { message: "Call status updated to ${callStatus}", status: 200 };
-//     } else {
-//       console.log("Room not found");
-//       return { message: "Room not found", status: 404 };
-//     }
-//   } catch (error) {
-//     console.error("Error handling the online call: ", error);
-//     return { message: "Error handling the online call", status: 500 };
-//   }
-// };
 
 // PAIR USERS FOR COLLABORATION (REVIEW)
 export const pairUsersForCollaboration = async () => {
@@ -325,8 +202,6 @@ export const pairUsersForCollaboration = async () => {
     return { message: "Error occurred during pairing", status: 500 };
   }
 };
-
-// !!!!! Old Code !!!!!
 
 export const getAllChallengesData = async (collectionName) => {
   try {

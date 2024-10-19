@@ -18,7 +18,6 @@ function App() {
         <Route path="/test" element={<BackEndTest />} />
         <Route path="/aitest" element={<AiBackendTest />} />
         <Route path="/challenge/:challengeId" element={<ChallengeDetails />} />
-        <Route path="/Testa" element={<LoadingPage />} />
         <Route path="/TestPage" element={<ChallengePage />} />
 
         <Route path="/Testa" element={<LoadingPage />} />
