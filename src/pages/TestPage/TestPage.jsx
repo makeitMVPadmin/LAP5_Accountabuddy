@@ -1,9 +1,16 @@
 import "./TestPage.scss";
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { Button } from "@mui/material";
 import { PopUpModal } from "../../components/PopUpModal/PopUpModal";
 import { getAllJobsData } from "../../utils/Functions/functions";
+=======
+import Button from "@mui/material/Button";
+import { useState } from "react";
+import Modal from "react-modal";
+import { PopUpModal } from "../../components/PopUpModal/PopUpModal";
+>>>>>>> 3c2c5829efbb1817eefd755f8a15c335bce18236
 import LoadingPage from "../LoadingPage/LoadingPage";
 
 const TestPage = () => {
