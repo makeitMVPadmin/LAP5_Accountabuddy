@@ -1,20 +1,34 @@
 import "./TestPage.scss";
+<<<<<<< HEAD
+import { useEffect, useState } from "react";
+import Modal from "react-modal";
+import { Button } from "@mui/material";
+import { PopUpModal } from "../../components/PopUpModal/PopUpModal";
+import { getAllJobsData } from "../../utils/Functions/functions";
+=======
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import Modal from "react-modal";
 import { PopUpModal } from "../../components/PopUpModal/PopUpModal";
+>>>>>>> 3c2c5829efbb1817eefd755f8a15c335bce18236
 import LoadingPage from "../LoadingPage/LoadingPage";
 
 const TestPage = () => {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [jobs, setJobs] = useState("");
 
-  const handleOpenPostModal = () => {
-    setModalOpen(true);
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getAllJobsData("Jobs");
+      setJobs(result[0]);
+      console.log(result[0]);
+    };
+    fetchData();
+  }, []);
 
-  const handleClosePostModal = () => {
-    setModalOpen(false);
-  };
+  const handleOpenPostModal = () => setModalOpen(true);
+  const handleClosePostModal = () => setModalOpen(false);
+
   return (
     <div>
       <LoadingPage />
@@ -27,26 +41,21 @@ const TestPage = () => {
         overlayClassName="modalOverlay"
         shouldCloseOnOverlayClick={false}
       >
-        <>
-          <PopUpModal
-            title={{ title: "goal breakdown" }}
-            closeButtonName="Close"
+        <PopUpModal title={{ title: "goal breakdown" }} closeButtonName="Close">
+          hello this is the goal breakdown
+          <Button
+            className="successMessage__linkedin-btn"
+            onClick={handleClosePostModal}
           >
-            {/* <ErrorMessageAlert>
-          </ErrorMessageAlert> */}
-            hello this is the goal breakdown
-            <Button
-              className="successMessage__linkedin-btn"
-              onClick={handleClosePostModal}
-            >
-              Close
-            </Button>
-          </PopUpModal>
-        </>
+            Close
+          </Button>
+        </PopUpModal>
       </Modal>
       <Button className="promptpage__post-btn" onClick={handleOpenPostModal}>
         goal
       </Button>
+      Jobs data
+      <div>{jobs?.title}</div>
     </div>
   );
 };
