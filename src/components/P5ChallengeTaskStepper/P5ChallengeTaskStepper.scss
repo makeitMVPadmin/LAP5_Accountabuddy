@@ -1,3 +1,5 @@
+@use "../../styles/partials/variables" as *;
+
 .task-stepper-container {
   width: 100%;
   display: flex;
@@ -43,6 +45,11 @@
     background-color: #dadada;
     color:black;
   }
+
+  &.active {
+    background-color: $MVP-Dark-Blue;
+    color: white;
+  }
 //   .button-text {
 //     text-align: center;
 //     color: black;
@@ -70,7 +77,6 @@
 }
 
 .task-details {
-  width: 80%;
   padding-left: 8px;
   padding-right: 8px;
   display: flex;
@@ -173,6 +179,10 @@
 
   .next-button {
     background-color: #0099ff;
+    &--completed {
+      background-color: green;
+      color: white;
+    }
   }
 
   .dashboard-text,
