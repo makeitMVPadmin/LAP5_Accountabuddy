@@ -3,13 +3,14 @@
 .details-modal {
     width: 100%;
     height: 100vh;
-    background-color: rgba(255, 255, 255, 0.5);
-    display: flex;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: none;
     justify-content: center;
     align-items: center;
     border: 1px solid black;
-    position: absolute;
+    position: fixed;
     top: 0;
+    left: 0;
 
     &__overview {
         width: 75%;
@@ -22,6 +23,7 @@
         border-left: 3px solid $MVP-black;
         padding: 4rem;
         position: relative;
+        background-color: $MVP-White;
     }
 
     &__close-icon {

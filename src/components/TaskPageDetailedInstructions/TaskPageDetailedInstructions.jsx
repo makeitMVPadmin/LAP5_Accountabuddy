@@ -4,10 +4,11 @@ import { useEffect, useState, useRef } from "react";
 import { getDoc, doc } from "firebase/firestore";
 import closeIcon from "../../assets/icons/close_icon.svg"
 import Button from "../Button/Button";
+import { useParams } from "react-router-dom";
 
 export default function TaskPageDetailedInstructions({ id }) {
 
-    const challengeId = id
+    const {challengeId} = useParams()
 
     const [challengeData, setChallengeData] = useState(null);
 
@@ -32,7 +33,7 @@ export default function TaskPageDetailedInstructions({ id }) {
         //get the reference
 
         //change its style
-        if (modalRef.current.style.display === "none") {
+        if (modalRef.current.style.display !== "flex") {
             modalRef.current.style.display = "flex"
         }
         else {

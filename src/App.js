@@ -18,12 +18,14 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/prompt" element={<PromptPage />} />
         <Route path="/challengePage" element={<ChallengePage />} />
-        <Route path="/test" element={<BackEndTest />} />
-        <Route path="/aitest" element={<AiBackendTest />} />
         <Route path="/challenge/:challengeId" element={<ChallengeDetails />} />
+        <Route path="/PairupBoard/:challengeId" element={<PairupBoard />} />
+        <Route path="/taskPage/:challengeId" element={<P5ChallenegeTaskMainLayout />} />
+
+
+        <Route path="/test" element={<BackEndTest />} />
         <Route path="/Testa" element={<LoadingPage />} />
-        <Route path="/TestPage" element={<P5ChallenegeTaskMainLayout />} />
-        <Route path="/PairupBoard" element={<PairupBoard />} />
+        <Route path="/aitest" element={<AiBackendTest />} />
       </Routes>
     </PageProvider>
   );

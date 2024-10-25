@@ -34,35 +34,29 @@
   word-wrap: break-word;
 
   &.completed {
-    background-color: green; /* Green when step is completed */
+    background-color: green;
+    /* Green when step is completed */
     color: white;
   }
-  &.current{
-    background-color:#0954B0; 
+
+  &.current {
+    background-color: #0954B0;
     color: white;
   }
-  &.inactive{
+
+  &.inactive {
     background-color: #dadada;
-    color:black;
+    color: black;
   }
 
   &.active {
     background-color: $MVP-Dark-Blue;
     color: white;
   }
-//   .button-text {
-//     text-align: center;
-//     color: black;
-//     font-size: 12px;
-//     font-family: "Corben", sans-serif;
-//     font-weight: 700;
-//     line-height: 24px;
-//     letter-spacing: 0.36px;
-//     word-wrap: break-word;
-//   }
 
   @media (max-width: 768px) {
     padding: 6px 14px;
+
     .button-text {
       font-size: 12px;
     }
@@ -70,6 +64,7 @@
 
   @media (max-width: 480px) {
     padding: 4px 12px;
+
     .button-text {
       font-size: 10px;
     }
@@ -126,6 +121,7 @@
     .section-title {
       font-size: 14px;
     }
+
     .section-description {
       font-size: 12px;
     }
@@ -135,6 +131,7 @@
     .section-title {
       font-size: 12px;
     }
+
     .section-description {
       font-size: 10px;
     }
@@ -143,17 +140,20 @@
 
 .navigation-bottom-buttons {
   margin-top: 40px;
-  display: flex; /* Flexbox for side-by-side layout */
-  justify-content: flex-start; /* Aligns buttons to the left */
-  gap: 24px; /* Space between the buttons */
-  // padding-left: 48px;
-  // padding-right: 48px;
+  display: flex;
+  /* Flexbox for side-by-side layout */
+  justify-content: flex-start;
+  /* Aligns buttons to the left */
+  gap: 24px;
+  /* Space between the buttons */
   width: 100%;
 
   .dashboard-button,
   .next-button {
-    flex: 1; /* Allow buttons to scale */
-    max-width: 200px; /* Set a maximum width for each button */
+    flex: 1;
+    /* Allow buttons to scale */
+    max-width: 200px;
+    /* Set a maximum width for each button */
     padding: 2px 0px 2px 0px;
     display: inline-flex;
     justify-content: center;
@@ -179,6 +179,7 @@
 
   .next-button {
     background-color: #0099ff;
+
     &--completed {
       background-color: green;
       color: white;
@@ -188,5 +189,11 @@
   .dashboard-text,
   .next-text {
     color: black;
+
+    &--completed {
+      font-family: "Corben", sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+    }
   }
 }
