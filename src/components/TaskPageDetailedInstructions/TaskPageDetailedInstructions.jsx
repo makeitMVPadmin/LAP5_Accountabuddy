@@ -47,7 +47,7 @@ export default function TaskPageDetailedInstructions({ id }) {
     }
     return (
         <>
-            <Button className="challenge-details-button" eventListener={toggleDetailsModal} color="dark-blue">Challenge Details</Button>
+            <Button className="challenge-details-button" eventListener={toggleDetailsModal} color="white">Challenge Details</Button>
             <section className="details-modal" ref={modalRef}>
                 <div className="details-modal__overview">
                     <img src={closeIcon} alt="close Icon" className="details-modal__close-icon" onClick={toggleDetailsModal}/>
