@@ -41,7 +41,7 @@ export function ChallengeDetails() {
     const handlePairUp = () => {
         const currentUser = MockCurrentUser[0]; 
         const matchedUser = findMatchedUser(currentUser);
-        navigate('/PairupBoard', { state: { matchedUser } });  
+        navigate(`/PairupBoard/${challengeId}`, { state: { matchedUser } });  
     };
    
     if (!challengeData) {

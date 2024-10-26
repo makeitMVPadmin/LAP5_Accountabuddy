@@ -4,10 +4,11 @@ import { useEffect, useState, useRef } from "react";
 import { getDoc, doc } from "firebase/firestore";
 import closeIcon from "../../assets/icons/close_icon.svg"
 import Button from "../Button/Button";
+import { useParams } from "react-router-dom";
 
 export default function TaskPageDetailedInstructions({ id }) {
 
-    const challengeId = id
+    const {challengeId} = useParams()
 
     const [challengeData, setChallengeData] = useState(null);
 
@@ -32,7 +33,7 @@ export default function TaskPageDetailedInstructions({ id }) {
         //get the reference
 
         //change its style
-        if (modalRef.current.style.display === "none") {
+        if (modalRef.current.style.display !== "flex") {
             modalRef.current.style.display = "flex"
         }
         else {
@@ -46,7 +47,7 @@ export default function TaskPageDetailedInstructions({ id }) {
     }
     return (
         <>
-            <Button className="challenge-details-button" eventListener={toggleDetailsModal} color="dark-blue">Challenge Details</Button>
+            <Button className="challenge-details-button" eventListener={toggleDetailsModal} color="white">Challenge Details</Button>
             <section className="details-modal" ref={modalRef}>
                 <div className="details-modal__overview">
                     <img src={closeIcon} alt="close Icon" className="details-modal__close-icon" onClick={toggleDetailsModal}/>
@@ -60,7 +61,7 @@ export default function TaskPageDetailedInstructions({ id }) {
 
                     <div className="details__section">
                         <h2 className="details__title">Constraints</h2>
-                        <ul className="objectives__list">
+                        <ul className="details__list">
                             {challengeData.detailedProblem.constraints.map(
                                 (constraint, index) => {
                                     return (
@@ -75,7 +76,7 @@ export default function TaskPageDetailedInstructions({ id }) {
 
                     <div className="details__section">
                         <h2 className="details__title">Examples</h2>
-                        <ul className="examples__list">
+                        <ul className="details__list">
                             {challengeData.detailedProblem.examples.map(
                                 (example, index) => {
                                     return (
@@ -90,7 +91,7 @@ export default function TaskPageDetailedInstructions({ id }) {
 
                     <div className="details__section">
                         <h2 className="details__title">Solution Approach</h2>
-                        <ul className="solutions__list">
+                        <ul className="details__list">
                             {challengeData.detailedProblem.solutionApproach.map(
                                 (example, index) => {
                                     return (

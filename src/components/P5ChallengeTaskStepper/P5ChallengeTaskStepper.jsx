@@ -105,18 +105,14 @@ const P5ChallengeTaskStepper = () => {
         <button className="dashboard-button" onClick={handleDashboard}>
           <span className="dashboard-text">Dashboard</span>
         </button>
-        {/* <button className={`next-button ${currentStep >= 2 ? 'completed' : ''}`} onClick={handleNextStep}>
-          <span className="next-text">Next Step</span>
-        </button> */}
-        {currentStep >= 3 ? (
-          <button className={`next-button completed`}>
-            <span className="next-text">Completed</span>
-          </button>
-        ) : (
+
+        {currentStep >= 3 ?
+          <span className="next-text--completed">Completed!</span>
+          :
           <button className={`next-button`} onClick={handleNextStep}>
             <span className="next-text">Next Step</span>
           </button>
-        )}
+        }
       </div>
     </div>
   );

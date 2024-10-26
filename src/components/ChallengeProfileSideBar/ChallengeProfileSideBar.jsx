@@ -4,6 +4,8 @@ import StatusStarted from '../StatusStarted/StatusStarted';
 import P5ConnectSection from '../P5ConnectSection/P5ConnectSection';
 import P5ChallengeTaskTimer from '../P5ChallengeTaskTimer/P5ChallengeTaskTimer';
 import './ChallengeProfileSideBar.scss';
+import TaskPageDetailedInstructions from '../TaskPageDetailedInstructions/TaskPageDetailedInstructions';
+
 
 const ChallengeProfileSideBar = () => {
     return (
@@ -27,6 +29,8 @@ const ChallengeProfileSideBar = () => {
         <div className="connect-section">
             <P5ConnectSection />
         </div>
+
+        <TaskPageDetailedInstructions/>
     </div>
     );
 };

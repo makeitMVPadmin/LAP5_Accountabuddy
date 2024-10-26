@@ -1,3 +1,5 @@
+@use "../../styles/partials/variables" as *;
+
 .task-stepper-container {
   width: 100%;
   display: flex;
@@ -32,20 +34,29 @@
   word-wrap: break-word;
 
   &.completed {
-    background-color: green; /* Green when step is completed */
+    background-color: green;
+    /* Green when step is completed */
     color: white;
   }
-  &.active {
-    background-color: #0954b0;
+
+  &.current {
+    background-color: #0954B0;
     color: white;
   }
+
   &.inactive {
     background-color: #dadada;
     color: black;
   }
 
+  &.active {
+    background-color: $MVP-Dark-Blue;
+    color: white;
+  }
+
   @media (max-width: 768px) {
     padding: 6px 14px;
+
     .button-text {
       font-size: 12px;
     }
@@ -53,6 +64,7 @@
 
   @media (max-width: 480px) {
     padding: 4px 12px;
+    
     .button-text {
       font-size: 10px;
     }
@@ -60,7 +72,6 @@
 }
 
 .task-details {
-  width: 100%;
   padding-left: 8px;
   padding-right: 8px;
   display: flex;
@@ -110,6 +121,7 @@
     .section-title {
       font-size: 14px;
     }
+
     .section-description {
       font-size: 12px;
     }
@@ -119,6 +131,7 @@
     .section-title {
       font-size: 12px;
     }
+
     .section-description {
       font-size: 10px;
     }
@@ -127,13 +140,10 @@
 
 .navigation-bottom-buttons {
   margin-top: 40px;
-  display: flex; /* Flexbox for side-by-side layout */
-  justify-content: flex-start; /* Aligns buttons to the left */
-  gap: 24px; /* Space between the buttons */
-  // padding-left: 48px;
-  // padding-right: 48px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 24px;
   width: 100%;
-
   .dashboard-button,
   .next-button {
     flex: 1; /* Allow buttons to scale */
@@ -155,14 +165,6 @@
     word-wrap: break-word;
     font-size: 20px;
     text-align: center;
-
-    &.active {
-      background-color: #0954b0; /* Green when step is completed */
-    }
-    &.completed{
-      background-color: green; /* Green when step is completed */
-
-    }
   }
 
   .dashboard-button {
@@ -171,10 +173,22 @@
 
   .next-button {
     background-color: #0099ff;
+
+    &--completed {
+      background-color: green;
+      color: white;
+    }
   }
 
   .dashboard-text,
   .next-text {
     color: black;
+
+    &--completed {
+      font-family: "Corben", sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+    }
   }
 }
+

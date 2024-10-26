@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom'; 
+import { useNavigate, useLocation, useParams } from 'react-router-dom'; 
 import mockMatchedUser from '../../mockDataForPhotocard'; 
 import PhotoCard from '../../components/P5AP_PhotoCard/photocard';
 import './PairupBoard.scss';
@@ -9,6 +9,7 @@ const PairupBoard = () => {
   const [loading, setLoading] = useState(false); 
   const [matchedUser, setMatchedUser] = useState(location.state?.matchedUser || null); 
   const navigate = useNavigate();
+  const {challengeId} = useParams()
 
   useEffect(() => {
  
@@ -19,11 +20,11 @@ const PairupBoard = () => {
   }, [matchedUser]);
 
   const handleBeginChallenge = () => {
-    navigate('/taskPage');
+    navigate(`/taskPage/${challengeId}`);
   };
 
   const handleGoBack = () => {
-    navigate('/challengePage');
+    navigate(`/challenge/${challengeId}`);
   };
 
   return (
