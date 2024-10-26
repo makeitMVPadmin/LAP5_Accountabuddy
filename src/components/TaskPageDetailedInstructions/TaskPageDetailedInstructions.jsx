@@ -61,7 +61,7 @@ export default function TaskPageDetailedInstructions({ id }) {
 
                     <div className="details__section">
                         <h2 className="details__title">Constraints</h2>
-                        <ul className="objectives__list">
+                        <ul className="details__list">
                             {challengeData.detailedProblem.constraints.map(
                                 (constraint, index) => {
                                     return (
@@ -76,7 +76,7 @@ export default function TaskPageDetailedInstructions({ id }) {
 
                     <div className="details__section">
                         <h2 className="details__title">Examples</h2>
-                        <ul className="examples__list">
+                        <ul className="details__list">
                             {challengeData.detailedProblem.examples.map(
                                 (example, index) => {
                                     return (
@@ -91,7 +91,7 @@ export default function TaskPageDetailedInstructions({ id }) {
 
                     <div className="details__section">
                         <h2 className="details__title">Solution Approach</h2>
-                        <ul className="solutions__list">
+                        <ul className="details__list">
                             {challengeData.detailedProblem.solutionApproach.map(
                                 (example, index) => {
                                     return (
