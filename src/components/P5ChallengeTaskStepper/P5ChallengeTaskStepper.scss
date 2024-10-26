@@ -169,10 +169,18 @@
 
   .dashboard-button {
     background-color: white;
+
+    &:hover {
+      background-color: $MVP-Yellow;
+    }
   }
 
   .next-button {
     background-color: #0099ff;
+
+    &:hover {
+      background-color: #0954B0;
+    }
 
     &--completed {
       background-color: green;

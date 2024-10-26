@@ -26,19 +26,19 @@ const P5ChallengeTaskStepper = () => {
         stepTitle: "Review Partner's Code",
         stepContent: [
           {
-            sectionTitle: "Challenge Overview",
+            sectionTitle: "Send Your Code To Your Partner",
             description:
-              "1. Use HTML to create a card layout, including an image, title, description, and a hidden section with text.\n2. Apply CSS for layout and design (e.g., background color, padding, and shadows).\n3. Implement JavaScript to toggle the visibility of the hidden text when the card is clicked.",
+              "• After finishing you solution, send it to your partner.",
           },
           {
-            sectionTitle: "Send and Review Code",
+            sectionTitle: "Review Your Partners Code",
             description:
-              "• Ensure the click event works and the hidden text reveals itself correctly.\n• Review the structure and organization of the HTML, CSS, and JavaScript. Are there ways to improve readability or modularity? Evaluate the overall appearance of the card.\n• Is the design polished and responsive across various screen sizes?",
+              "• Review Your partners code to make sure that it works as expected.\n• Make sure to note and potential improvements that could be made to your partners solution\n• Send any feedback you have back to your partner along with any relevant code snippets or comments",
           },
         ],
       },
       {
-        stepTitle: "Finalize Component Together",
+        stepTitle: "Finalize Solution Together",
         stepContent: [
           {
             sectionTitle: "Apply feedback",
@@ -48,12 +48,7 @@ const P5ChallengeTaskStepper = () => {
           {
             sectionTitle: "Test the Final Version",
             description:
-              "• Work together to test the final component and ensure everything functions correctly.",
-          },
-          {
-            sectionTitle: "Submit the Final Challenge",
-            description:
-              "• Once you are both satisfied with the final version of the component, submit the challenge by clicking Complete.",
+              "• Work together to test the final solution and ensure everything functions correctly.",
           },
         ],
       },
