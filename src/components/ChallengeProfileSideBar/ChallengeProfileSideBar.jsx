@@ -6,6 +6,7 @@ import P5ChallengeTaskTimer from '../P5ChallengeTaskTimer/P5ChallengeTaskTimer';
 import './ChallengeProfileSideBar.scss';
 import TaskPageDetailedInstructions from '../TaskPageDetailedInstructions/TaskPageDetailedInstructions';
 
+
 const ChallengeProfileSideBar = () => {
     return (
         <div className="challenge-profile-container">

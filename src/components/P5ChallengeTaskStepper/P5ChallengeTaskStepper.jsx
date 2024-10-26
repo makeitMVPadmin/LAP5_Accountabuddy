@@ -69,18 +69,16 @@ const P5ChallengeTaskStepper = () => {
     if (currentStep < 3) {
       // Assuming you have 3 steps (you can adjust this value based on your step count)
       setCurrentStep(currentStep + 1);
-      console.log(currentStep)
     }
   };
   return (
-
     <div className="task-stepper-container">
       {taskDetails.steps.map((step, index) => (
         <>
           <div key={index} className="step-section">
             {/* Dynamic Button for each step */}
             <div
-              className={`step-button ${currentStep > index ? 'completed' : currentStep === index ? 'active' : ''}`}
+              className={`step-button ${currentStep > index ? "completed" : currentStep === index ? "active" : ""}`}
               style={{ backgroundColor: step.buttonColor }}
             >
               <div className="button-text">{step.stepTitle}</div>
@@ -115,7 +113,6 @@ const P5ChallengeTaskStepper = () => {
             <span className="next-text">Next Step</span>
           </button>
         }
-
       </div>
     </div>
   );

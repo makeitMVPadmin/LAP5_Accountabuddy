@@ -64,7 +64,7 @@
 
   @media (max-width: 480px) {
     padding: 4px 12px;
-
+    
     .button-text {
       font-size: 10px;
     }
@@ -141,19 +141,13 @@
 .navigation-bottom-buttons {
   margin-top: 40px;
   display: flex;
-  /* Flexbox for side-by-side layout */
   justify-content: flex-start;
-  /* Aligns buttons to the left */
   gap: 24px;
-  /* Space between the buttons */
   width: 100%;
-
   .dashboard-button,
   .next-button {
-    flex: 1;
-    /* Allow buttons to scale */
-    max-width: 200px;
-    /* Set a maximum width for each button */
+    flex: 1; /* Allow buttons to scale */
+    max-width: 200px; /* Set a maximum width for each button */
     padding: 2px 0px 2px 0px;
     display: inline-flex;
     justify-content: center;
@@ -197,3 +191,4 @@
     }
   }
 }
+

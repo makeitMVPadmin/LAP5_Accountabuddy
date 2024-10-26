@@ -26,6 +26,7 @@ function App() {
         <Route path="/test" element={<BackEndTest />} />
         <Route path="/Testa" element={<LoadingPage />} />
         <Route path="/aitest" element={<AiBackendTest />} />
+
       </Routes>
     </PageProvider>
   );
